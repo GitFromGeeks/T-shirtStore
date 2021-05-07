@@ -2,15 +2,14 @@ import React from 'react'
 import ImageHelper from './helper/imageHelper';
 import {Redirect} from "react-router-dom";
 import { addItemToCart,removeItemFromCart } from './helper/cartHelper';
+import {isAuthenticated} from "../auth/helper";
 
 
 
-
-const isAuthenticated=true;
 const Card = ({
     product,
     addtoCard=true,
-    removeFromCart=false,
+    removeFromCart=true,
     }) => {
         const cardTitile=product?product.name: "photo form pexel"
         const cardDescription=product?product.description:"Default description "
