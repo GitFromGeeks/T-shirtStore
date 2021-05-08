@@ -24,6 +24,10 @@ const Menu = ({ history, path }) => {
             Home
           </Link>
         </li>
+        <li className="nav-item nav-link" style={{color:"#FFFFFF"}}>Shop</li>
+        <li className="nav-item nav-link" style={{color:"#FFFFFF"}}>Contact</li>
+        <li className="nav-item nav-link" style={{color:"#FFFFFF"}}>About</li>
+
         {isAuthenticated() && (
         <li className="nav-item">
           <Link

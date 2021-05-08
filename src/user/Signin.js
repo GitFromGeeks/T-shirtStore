@@ -140,9 +140,9 @@ const Signin = () => {
       {loadingMessage()}
 
       {signInForm()}
-      <p className="text-center">
+      {/* <p className="text-center">
         {JSON.stringify(values)}
-      </p>
+      </p> */}
       {performRedirect()}
     </Base>
   );

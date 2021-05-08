@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ImageHelper from './helper/imageHelper';
 import {Redirect} from "react-router-dom";
 import { addItemToCart,removeItemFromCart } from './helper/cartHelper';
 import {isAuthenticated} from "../auth/helper";
 
 
-
 const Card = ({
     product,
-    addtoCard=true,
-    removeFromCart=true,
+    addtoCart=true,
+    removeFromCart=false,
+    reload=undefined,
+    setReload=f=>f,
     }) => {
+
+        const [redirect,setRedirect]=useState(false);
+
+
         const cardTitile=product?product.name: "photo form pexel"
         const cardDescription=product?product.description:"Default description "
         const CardPrice=product?product.price:"Price"
 
         const addToCart=()=>{
             if(isAuthenticated){
-              addItemToCart(product,()=>{})
+              addItemToCart(product,()=>setRedirect(true));
                 console.log("Added to Cart");
             }
             else{
@@ -32,7 +37,7 @@ const Card = ({
         };
         const showAddToCart=(addToCart)=>{
             return(
-                addToCart && (
+                addtoCart && (
                     <button
                     onClick={addToCart}
                     className="btn btn-block btn-outline-success mt-2 mb-2"
@@ -49,6 +54,7 @@ const Card = ({
                     <button
                     onClick={()=>{
                       removeItemFromCart(product._id);
+                      setReload(!reload)
                         console.log("Product removed form cart");
                     }}
                     className="btn btn-block btn-outline-danger mt-2 mb-2"
@@ -62,6 +68,7 @@ const Card = ({
       <div className="card text-white bg-dark border border-info ">
         <div className="card-header lead">{cardTitile}</div>
         <div className="card-body">
+          {getAredirect(redirect)}
             <ImageHelper product={product}/>
           <p className="lead bg-success font-weight-normal text-wrap">
             {cardDescription}

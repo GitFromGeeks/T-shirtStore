@@ -30,7 +30,6 @@ const Home= ()=> {
     }, [])
     return (
         <Base title="Home Page"description="Welcome to T-shirt store">
-            <h1>Home Page</h1>
             <div className="row">
                 {products.map((product,index)=>{
                     return (
