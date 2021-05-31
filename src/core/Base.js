@@ -20,7 +20,7 @@ const Base=({
                     <button className="btn btn-warning btn-lg">Contact Us</button>
                     <div className="container">
                         <span className="text-warning">
-                            An amazing Django React Full stack course
+                            A basic Ecom website built on Django+Reactjs
                         </span>
                     </div>
                 </div>
